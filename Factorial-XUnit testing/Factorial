@@ -1,0 +1,70 @@
+using System;
+using System.IO;
+using System.Text.RegularExpressions;
+
+namespace Factorial
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter any number:");
+            int num = int.Parse(Console.ReadLine());
+            int resultedValue = Fact(num);
+            Console.WriteLine($"Factorial of {num} is {resultedValue}");
+
+            Console.WriteLine("Enter any string:");
+            var myString = Console.ReadLine();
+            var resultedString = LoadFile(myString);
+            Console.WriteLine($"{resultedString}");
+
+            Console.WriteLine("Enter your emailid:");
+            var mail = Console.ReadLine();
+            var resultedBool = MailManage(mail);
+            Console.WriteLine($"The {mail} is {resultedBool}");
+        }
+
+        public static int Fact(int number)
+        {
+            //without refactoring
+            /*int i, fact = 1;
+            for (i = 1; i <= number; i++)
+            {
+                fact *= i;
+            }
+            return fact;*/
+
+            //with refactoring
+            int i, fact = 1;
+            if (number <= 0)
+                return -1;
+            else
+            {
+                for (i = 1; i <= number; i++)
+                {
+                    fact *= i;
+                }
+                return fact;
+            }
+
+        }
+
+        public static string LoadFile(string file)
+        {
+            if (file.Length < 10)
+            {
+                throw new FileNotFoundException();
+            }
+            else
+            {
+                return "File loaded successfully!";
+            }
+        }
+
+        public static bool MailManage(string mail)
+        {
+            Regex regex = new Regex(@"^[\w0-9._%+-]+@[\w0-9.-]+\.[\w]{2,6}$");
+            return regex.IsMatch(mail);
+        }
+    }
+}
