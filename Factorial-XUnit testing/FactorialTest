@@ -1,0 +1,60 @@
+using System;
+using Xunit;
+using Factorial;
+using System.IO;
+
+namespace FactorialTest
+{
+    public class UnitTest1
+    {
+        //single testcase
+        [Fact]
+        public void Fact_CheckFactWithTestCase()
+        {
+            //Arrange - set up
+            int expectedValue = 120;
+
+            //Act - actual action
+            int actualValue = Program.Fact(5);
+
+            //Assert - compares
+            Assert.Equal(expectedValue, actualValue);
+        }
+
+        //multiple testcases
+        [Theory]
+        [InlineData(1, 1)]
+        [InlineData(0, -1)]
+        //[InlineData(-1,-1)]
+        public void Fact_CheckFactWithMultipleCases(int x, int expectedValue)
+        {
+            //Act - actual action
+            int actualValue = Program.Fact(x);
+
+            //Assert - compares
+            Assert.Equal(expectedValue, actualValue);
+        }
+
+        //Exception testcase
+        [Fact]
+        public void LoadFile_CheckWithFileLength()
+        {
+            Assert.Throws<FileNotFoundException>(() => Program.LoadFile("hello"));
+        }
+
+        //using theory
+        [Theory]
+        [InlineData("v@gcom",false)]
+        [InlineData("abc@g.com",true)]
+        [InlineData("cat",false)]
+        [InlineData("",false)]
+        public void MailManage_CheckWithMailAddress(string mail,bool expectedResult)
+        {
+            //Act
+            bool isValid = Program.MailManage(mail);
+
+            //Assert
+            Assert.Equal(expectedResult, isValid);
+        }
+    }
+}
