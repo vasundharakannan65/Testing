@@ -1,0 +1,11 @@
+Unit testing:
+1) to test small component in a s/w & uses TDD approach
+2) small component could be any function, any property or any class which is handling the specific functionality
+3)  basically ensures us that the system is designed as per the requirements and help us to figure out the bugs
+
+XUnit testing - advantages,purpose 
+1) eliminates the risk of test method dependencies
+2) extensible than Nunit & MSunit
+3) [fact] attribute is used instead of [test]
+4) allows you to create new attributes to control your tests
+5) allows you to inherit from Fact, Theory, and other attributes
