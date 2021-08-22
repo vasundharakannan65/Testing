@@ -1,0 +1,48 @@
+using System;
+using Xunit;
+using Testing;
+
+namespace UnitTesting
+{
+    public class ConvertCelsiusTesting
+    {
+        //single testcase
+        [Fact]
+        public void ConvertToCelsius_CheckCelsius()
+        {
+            //Arrange - set up
+            double expectedValue = -40;
+
+            //Act - actual action
+            double actualValue = Program.ConvertToCelsius(-40);
+
+            //Assert - compares
+            Assert.Equal(expectedValue, actualValue);
+
+        }
+
+        //multiple testcase
+        [Theory]
+        [InlineData(0,-18)]
+        [InlineData(-40,-40)]
+        [InlineData(100,38)]
+        public void ConvertToCelsius_CheckCelsiusWithMultipleValues(double fahrenheit,double expectedValue)
+        {
+            double actualValue = Program.ConvertToCelsius(fahrenheit);
+
+            Assert.Equal(expectedValue, actualValue);
+        }
+
+
+        [Theory]
+        [InlineData(-500,-1)]
+        [InlineData(-458,-272)]
+        [InlineData(-459.67,-273)]
+        public void ConvertToCelsius_CheckWithBVAValues(double fahrenheit,double expectedValue)
+        {
+            double actualValue = Program.ConvertToCelsius(fahrenheit);
+
+            Assert.Equal(expectedValue, actualValue);
+        }
+    }
+}
