@@ -1,0 +1,90 @@
+using System;
+
+namespace Testing
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            /*Console.WriteLine("Fahrenheit to Celsius Program: Enter the fahrenheit");
+
+            var myNumber = double.Parse(Console.ReadLine());
+            Console.WriteLine($"The {myNumber}°F converted to {ConvertToCelsius(myNumber)}°C");
+
+            Console.Write("\nArea of a triangle: Enter the Base:");
+            double @base = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Enter the Height:");
+            double height = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine($"Area of a Triangle is {AreaOfTriangle(@base,height)}cm in sq");
+
+            Console.WriteLine($"Area of triangle is {GetArea(1, 4, 7)}cm");*/
+
+            //var emp = new Employee() { empname = "abc" };
+
+            Console.WriteLine("Enter your salary:");
+            var amount = double.Parse(Console.ReadLine());
+            var salObj = new Salary(amount);
+
+            Console.WriteLine("Enter the hike percent:");
+            var hike = double.Parse(Console.ReadLine());
+            Console.WriteLine($"Salary after hike: ${salObj.IncreasedPay(hike)}");
+
+
+
+
+        }
+
+        //Convert  Fahrenheit to Degree Celsius
+        public static double ConvertToCelsius(double number)
+        {
+            //(F – 32) * 5 / 9;
+            if(number < -459.67)
+            {
+                return -1;
+            }
+            else
+            {
+                var celsius = (number - 32) * 5 / 9;
+                return Math.Round(celsius);
+            }
+
+        }
+
+        //Area of a triangle
+        public static double AreaOfTriangle(double num1,double num2)
+        {
+            double triangleArea;
+
+            if(num1 > 0 && num2 > 0)
+            {
+                triangleArea = (num1 * num2) / 2;
+                return triangleArea;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        //using Herons Formula
+        public static double GetArea(double a, double b, double c)
+        {
+            double s = (a + b + c) / 2;
+
+            //trying to form triangle
+            if (a + b <= c || b + c <= a || a + c <= b)
+            {
+                return 0;
+            }
+            else
+            {
+                double x = ((s) * (s - a) * (s - b) * (s - c));
+                double area = Math.Sqrt(x);
+                return area;
+            }
+
+        }
+
+    }
+}
