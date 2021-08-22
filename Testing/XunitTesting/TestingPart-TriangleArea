@@ -1,0 +1,47 @@
+using Xunit;
+using Testing;
+
+namespace UnitTesting
+{
+    public class AreaTriangleTesting
+    {
+        [Fact]
+        public void AreaTriangle_CheckAreaCalculation()
+        {
+            //Arrange - set up
+            double expectedValue = -1;
+
+            //Act - actual action
+            double actualValue = Program.AreaOfTriangle(0, 0);
+
+            //Assert - compares
+            Assert.Equal(expectedValue, actualValue);
+        }
+
+        [Theory]
+        [InlineData(-1, -1, -1)]
+        [InlineData(5, 5, 12.5)]
+        [InlineData(-5, 5, -1)]
+        [InlineData(5, -5, -1)]
+        [InlineData(-5, -5, -1)]
+        public void AreaTriangle_ChechWithMultipleValues(double @base, double height, double expectedValue)
+        {
+            double actualValue = Program.AreaOfTriangle(@base, height);
+
+            Assert.Equal(expectedValue, actualValue);
+        }
+
+        [Theory]
+        [InlineData(3, 4, 5, 6)]
+        [InlineData(1, 4, 7, 0)]
+        [InlineData(3, 3, 8, 0)]
+        public void GetArea_ChechWithMultipleValues(double a, double b, double c, double expectedValue)
+        {
+            double actualValue = Program.GetArea(a, b, c);
+
+            Assert.Equal(expectedValue, actualValue);
+        }
+
+
+    }
+}
